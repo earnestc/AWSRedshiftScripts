@@ -1,0 +1,5 @@
+#This script lists the users, query stattus and query text for all querries with the status 'running' or 'returning' 
+SELECT user_id, session_id, start_time, status, query_text
+FROM sys_query_history
+WHERE status in ('running', 'returning')
+order by start_time;
