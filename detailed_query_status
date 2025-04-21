@@ -1,0 +1,16 @@
+#This query returns the details of all queries with the status of 'running', 'queued' or 'returning' 
+SELECT user_id,
+       query_id,
+       transaction_id,
+       session_id,
+       status,
+       trim(database_name) AS database_name,
+       start_time,
+       end_time,
+       result_cache_hit,
+       elapsed_time,
+       queue_time,
+       execution_time
+FROM sys_query_history
+WHERE status IN ('running','queued', 'returning')
+ORDER BY start_time;
